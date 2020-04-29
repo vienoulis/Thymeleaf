@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Admin</title>
+</head>
+<body>
+<h1>Update</h1>
+<form method="post" action="/admin/update">
+    <table>
+        <tr>
+            <input type="hidden" name="Id" th:value="${userUpdated.id}">
+            <td>Name:</td>
+            <td><input type="text" th:value="${userUpdated.name}"   name="name"></td>
+        </tr>
+        <tr>/
+            <td>Age:</td>
+            <td><input type="number" th:value="${userUpdated.age}" name="age"></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="text" th:value="${userUpdated.password}" name="password"></td>
+        </tr>
+        <tr>
+            <td>Role set:</td>
+            <td></td>
+        </tr>
+        <tr>
+            <a th:each="role : ${roles}">
+                <td>
+                    <label>
+                        <input type="checkbox" name="roleList" th:value="${role.toString()}"/>
+                    </label>
+                    [[${role.toString()}]]
+                </td>
+            </a>
+        </tr>
+    </table>
+    <p>
+        <input type="submit" name="doUpdate" value="Update">
+    </p>
+</form>
+<a href="/logout" name="LogOut">Log out.</a></body>
+</html>

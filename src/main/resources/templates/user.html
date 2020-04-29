@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>User</title>
+</head>
+<body>
+<table>
+    <tr>
+   <td> User name:</td>
+        <td th:text="${user.name}"></td>
+    </tr>
+    <tr>
+        <td>User age:</td>
+        <td th:text="${user.age}"></td>
+    </tr>
+</table>
+<!--    User name: <th:out value="${user.name}"/>-->
+<!--</P>-->
+<!--<p>-->
+<!--    User age: <th:text="${user.age}"/>-->
+<!--</p>-->
+<a href="/logout" name="LogOut">Log out.</a>
+</body>
+</html>

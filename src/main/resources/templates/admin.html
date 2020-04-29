@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Admin</title>
+</head>
+<body>
+<h1>Users</h1>
+<form method="post" action="/admin/user">
+    <table>
+        <tr>
+            <td> Name:</td>
+            <td><input type="text" name="name"></td>
+
+        </tr>
+        <tr>
+            <td> Age:</td>
+            <td><input type="number" name="age"></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="number" name="password"></td>
+        </tr>
+        <tr>
+            <td>Role set:</td>
+            <td></td>
+        </tr>
+        <tr>
+            <a th:each="role : ${roles}">
+            <td>
+                <label>
+                    <input type="checkbox" name="roleList" th:value="${role.toString()}"/>
+                </label>
+                [[${role.toString()}]]
+                </td>
+            </a>
+        </tr>
+
+
+    </table>
+    <p><input type="submit" name="add" value="Create"></p>
+</form>
+<table>
+    <tr>
+        <td><h4>Name: </h4></td>
+        <td><h4>Age: </h4></td>
+    </tr>
+    <a th:each="user:${users}" >
+        <form method="post">
+            <input type="hidden" th:value="${user.id}" name="userId">
+            <tr>
+                <td>
+                    <a th:text="${user.name}"></a>
+                </td>
+                <td>
+                    <a th:text="${user.age}"></a>
+                </td>
+                <td><input formaction="/admin/delete" type="submit" name="delete" value="Delete"></td>
+                <td><input formaction="/admin/update" formmethod="get" type="submit" name="update" value="Update"></td>
+            </tr>
+        </form>
+    </a>
+
+</table>
+<a href="/logout" name="LogOut">Log out.</a></body>
+</html>
